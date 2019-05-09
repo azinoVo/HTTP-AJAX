@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import FriendList from './components/FriendList';
+import {Route} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styled from 'styled-components'
+
+const AppContainer = styled.div`
+  max-width:1500px;
+  height:auto;
+`
 
 
 class App extends Component {
@@ -21,10 +29,14 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.friends);
+
     return (
-      <div>
-      <FriendList />
-      </div>
+      <AppContainer>
+      {/* <FriendList friends={this.state.friends} /> */}
+      {/* <Route path='/movies/:id' render={props => (<Movie {...props} addToSavedList={this.addToSavedList} />)} /> */}
+      <Route path='/' render={props => (<FriendList {...props} friends={this.state.friends} />)}/>
+      </AppContainer>
     );
   }
 }
