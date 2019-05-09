@@ -14,9 +14,8 @@ class FriendList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1 style={{textAlign: "center"}}>My Friends</h1>
                 {this.props.friends.map(friend =>
-                <FriendInfo key={friend.id} friend={friend} />)}
+                <FriendInfo id={friend.id} friend={friend} />)}
             </React.Fragment>
         );
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import FriendList from './components/FriendList';
+import Home from './components/Home';
 import {Route} from 'react-router-dom';
 import styled from 'styled-components'
 
@@ -31,9 +32,10 @@ class App extends Component {
 
     return (
       <AppContainer>
+        <Route exact path='/' render={props => (<Home {...props} friends={this.state.friends} />)}/> 
       {/* <FriendList friends={this.state.friends} /> */}
       {/* <Route path='/movies/:id' render={props => (<Movie {...props} addToSavedList={this.addToSavedList} />)} /> */}
-      <Route path='/' render={props => (<FriendList {...props} friends={this.state.friends} />)}/>
+        <Route path='/friends' render={props => (<FriendList {...props} friends={this.state.friends} />)}/>
       </AppContainer>
     );
   }
