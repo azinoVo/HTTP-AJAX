@@ -3,14 +3,12 @@ import './App.css';
 import axios from 'axios';
 import FriendList from './components/FriendList';
 import {Route} from 'react-router-dom';
-import PropTypes from 'prop-types';
 import styled from 'styled-components'
 
 const AppContainer = styled.div`
-  max-width:1500px;
+  max-width:500px;
   height:auto;
 `
-
 
 class App extends Component {
   constructor(){
@@ -40,6 +38,8 @@ class App extends Component {
     );
   }
 }
+
+
 
 
 export default App;

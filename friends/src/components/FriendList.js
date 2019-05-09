@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import FriendInfo from './FriendInfo';
 import PropTypes from 'prop-types';
-import styled from 'styled-components'
 
-const Friends = styled.div`
-    width:100%;
-    display:flex; 
-`
 
 class FriendList extends Component {
     constructor(props){
@@ -18,14 +13,24 @@ class FriendList extends Component {
 
     render() {
         return (
-            <Friends>
-                <h1>Top Friends</h1>
+            <React.Fragment>
+                <h1 style={{textAlign: "center"}}>My Friends</h1>
                 {this.props.friends.map(friend =>
                 <FriendInfo key={friend.id} friend={friend} />)}
-            </Friends>
+            </React.Fragment>
         );
     }
 }
+
+FriendList.propTypes = {
+    friends: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        age: PropTypes.number,
+        email: PropTypes.string
+    })
+}
+
 
 export default FriendList;
 

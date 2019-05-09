@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 const FriendContainer = styled.div`
-    width:30%;
+    width:100%;
     height: auto;
     background-color:lightblue; 
     margin:1%;
