@@ -5,6 +5,7 @@ import FriendList from './components/FriendList';
 import Home from './components/Home';
 import {Route} from 'react-router-dom';
 import styled from 'styled-components'
+import NewFriendForm from './components/NewFriendForm';
 
 const AppContainer = styled.div`
   max-width:500px;
@@ -27,15 +28,25 @@ class App extends Component {
     .catch(error => console.log(error));
   }
 
+  // passing this to the newFriendForm, friend is the state on the form
+  addFriend = friend => {
+    axios.post(`http://localhost:5000/friends`, friend)
+      .then(response => 
+        this.setState({friends: response.data}),
+          )
+      .catch(error => console.log(error))
+  }
+
   render() {
     console.log(this.state.friends);
 
     return (
       <AppContainer>
+              {/* <Route path='/movies/:id' render={props => (<Movie {...props} addToSavedList={this.addToSavedList} />)} /> */}
+
         <Route exact path='/' render={props => (<Home {...props} friends={this.state.friends} />)}/> 
-      {/* <FriendList friends={this.state.friends} /> */}
-      {/* <Route path='/movies/:id' render={props => (<Movie {...props} addToSavedList={this.addToSavedList} />)} /> */}
-        <Route path='/friends' render={props => (<FriendList {...props} friends={this.state.friends} />)}/>
+        <Route path='/friendList' render={props => (<FriendList {...props} friends={this.state.friends} />)}/>
+        <Route path='/addFriend' render={props => (<NewFriendForm {...props} addFriend={this.addFriend} />)} />
       </AppContainer>
     );
   }
