@@ -24,7 +24,7 @@ class Home extends Component {
                 <h1 style={{ textAlign: "center" }}>My Friends</h1>
                 <FriendsAll>
                     {this.props.friends.map(friend =>
-                        <p>{friend.name}</p>)}
+                        <span key={friend.id}>{friend.name}</span>)}
                 </FriendsAll>
             </React.Fragment>
         );
